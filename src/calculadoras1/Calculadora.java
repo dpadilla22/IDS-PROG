@@ -1,6 +1,9 @@
 package calculadoras1;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,18 +19,46 @@ public class Calculadora extends JFrame{
 			setSize(310,400);
 			setLocationRelativeTo(null);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			this.componentes();
+			this.botones();
 		}
 		
-		public void componentes() {
-			JPanel resultado=new JPanel();
-			resultado.setSize(300,300);
-			resultado.setLocation(0,0);
-			resultado.setBackground(Color.gray);
-			resultado.setLayout(null);
+		public void botones() {
+			JPanel botones=new JPanel();
+			botones.setSize(this.getWidth(),this.getHeight());
+			botones.setLocation(0,0);
+			botones.setLayout(new BorderLayout());
+			botones.setBackground(Color.gray);
 			
+			JLabel input = new JLabel("20.00", 4);
+			input.setOpaque(true);
+			input.setBackground(Color.white);
+			input.setFont(new Font("SingPainter", Font.BOLD, 40));
+			botones.add(input, BorderLayout.NORTH);
 			
-			JLabel titulo=new JLabel("24.32",SwingConstants.CENTER);
+			JPanel botonesPanel = new JPanel();
+	        botonesPanel.setLayout(new GridLayout(4, 3));
+	        botonesPanel.setBackground(Color.RED);
+	        botones.add(botonesPanel, BorderLayout.CENTER);
+
+	        String botonTxt[] = {"9", "8", "7", "6", "5", "4", "3", "2", "1", "0", ".", "="};
+
+	        for (int i = 0; i < botonTxt.length; i++) {
+	            botonesPanel.add(new JButton(botonTxt[i]));
+	        }
+
+	        JPanel accionPanel = new JPanel();
+	        accionPanel.setLayout(new GridLayout(6, 1));
+	        accionPanel.setBackground(Color.GREEN);
+	        botones.add(accionPanel, BorderLayout.EAST);
+
+	        String accionTxt[] = {"DEL", "+", "-", "*", "/", "CE"};
+
+	        for (int i = 0; i < accionTxt.length; i++) {
+	            accionPanel.add(new JButton(accionTxt[i]));
+	        }
+	        
+	    	add(botones);
+			/*JLabel titulo=new JLabel("24.32",SwingConstants.CENTER);
 			titulo.setBounds(10, 10, 270, 50);
 			titulo.setOpaque(true);
 			titulo.setForeground(Color.white);
@@ -55,7 +86,7 @@ public class Calculadora extends JFrame{
 			resultado.add(b2);
 			
 			JButton b3=new JButton("/");
-			b3.setBounds(220, 70, 60, 40);
+,			b3.setBounds(220, 70, 60, 40);
 			b3.setForeground(Color.white);
 			b3.setBackground(Color.black);
 			resultado.add(b3);
@@ -149,8 +180,8 @@ public class Calculadora extends JFrame{
 			igual.setForeground(Color.white);
 			igual.setBackground(Color.black);
 			resultado.add(igual);
-			
-			add(resultado);
+			*/
+		
 			
 			
 			
